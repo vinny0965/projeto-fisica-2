@@ -18,8 +18,8 @@ button(text="Excecutar",bind = exetuar_btn)
 
 #Condições iniciais
 
-theta = 30*(pi/180)
-g = vec(0,-9.8,0)  #aceleração da gravidade
+theta = 30*(pi/180)  #30 é o ângulo de 30 graus, multiplicamos por Pi dividindo por 180 para ter o resultado em radiano
+g = vec(0,-9.8,0)  #aceleração da gravidade no eixo y
 bola.v = vec(20*cos(theta),20*sin(theta),0) #velocidade inicial da bola
 t = 0 #tempo inicial
 dt = 0.001 #acrecimo de tempo
@@ -29,7 +29,9 @@ legenda = label(pos=vec(0,-20,0),text="Distancia em X")
 legendaVelY = label(pos=vec(0,-10,0), text="Velocidade")
 legendaDisY = label(pos=vec(0,-15,0),text="Distancia em Y")
 
-
+#graficos
+grafico1= graph(xtitle='alcance (m)',ytitle='altura (m)')
+grafico_1 = gcurve(graph=grafico1,color = color.red)
 #setas
 
 bola.ex = vector(20*cos(theta),0,0)
@@ -51,7 +53,7 @@ while bola.pos.y >=0.5:
         legenda.text = "Distância percorrida em X = {:0.3f} m".format(bola.pos.x)
         legendaDisY.text = "Distância percorrida em Y = {:0.3f} m".format(bola.pos.y)
         legendaVelY.text = "velocidade componente Y = {:0.3f}".format(bola.v.y)
-
+        grafico_1.plot(bola.pos.x,bola.pos.y)
 
 
 
