@@ -30,7 +30,7 @@ legendaVelY = label(pos=vec(0,-10,0), text="Velocidade")
 legendaDisY = label(pos=vec(0,-15,0),text="Distancia em Y")
 
 #graficos
-grafico1= graph(xtitle='alcance  em (X) ',ytitle='altura em (X)')
+grafico1= graph(xtitle='alcance  em (X) ',ytitle='altura em (Y)')
 grafico_1 = gcurve(graph=grafico1,color = color.red)
 
 grafico2= graph(xtitle='tempo ',ytitle='posicao em (Y)')
