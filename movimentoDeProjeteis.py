@@ -30,8 +30,15 @@ legendaVelY = label(pos=vec(0,-10,0), text="Velocidade")
 legendaDisY = label(pos=vec(0,-15,0),text="Distancia em Y")
 
 #graficos
-grafico1= graph(xtitle='alcance ',ytitle='altura ')
+grafico1= graph(xtitle='alcance  em (X) ',ytitle='altura em (X)')
 grafico_1 = gcurve(graph=grafico1,color = color.red)
+
+grafico2= graph(xtitle='tempo ',ytitle='posicao em (Y)')
+grafico_2 = gcurve(graph=grafico2,color = color.red)
+
+grafico3= graph(xtitle='tempo ',ytitle='Velocidade em (Y)')
+grafico_3 = gcurve(graph=grafico3,color = color.red)
+
 #setas
 
 bola.ex = vector(20*cos(theta),0,0)
@@ -54,6 +61,8 @@ while bola.pos.y >=0.5:
         legendaDisY.text = "Distância percorrida em Y = {:0.3f} m".format(bola.pos.y)
         legendaVelY.text = "velocidade componente Y = {:0.3f}".format(bola.v.y)
         grafico_1.plot(bola.pos.x,bola.pos.y)
+        grafico_2.plot(t,bola.pos.y)
+        grafico_3.plot(t,bola.v.y)
 
 
 
