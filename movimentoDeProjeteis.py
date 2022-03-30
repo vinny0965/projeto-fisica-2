@@ -1,4 +1,4 @@
-from vpython import *;
+from vpython import *
 
 #objetos
 bola = sphere(pos=vec(0,1,0), radius=1, color=color.red, make_trail=True)
@@ -6,21 +6,37 @@ solo = box(pos=vec(0,0,0),size=vec(80,0.5,5),color=color.white)
 
 #funções
 executar = False
-def exetuar_btn():
+def executar_btn():
     global executar
     executar = True
 
+def anexar():
+    pass
+velocidade_alternativa = False
+def velocidade_btn():
+    global velocidade_alternativa
+    velocidade_alternativa = True
+
+
+#def calcular_com_velocidade_inicial(velocidade_digitada): - essa velocidade seria o velocidade_field.text que está no while lá em baixo,
+#ao clicar em velocidade_btn ele vai fazer as mesmas coisas que o executar faz, porém com essa velocidade passada pelo usuário
 
 #botao
 
-button(text="Excecutar",bind = exetuar_btn)
+button(text="Executar",bind = executar_btn)
+button(text="Alterar Velocidade",bind = velocidade_btn)
 
+#texto velocidade:
+velocidade_texto = wtext(text="Digite a velocidade inicial:")
+
+#textfield para velocidade
+velocidade_field = winput(bind = anexar(),type = "numeric",width=50,_height=20)
 
 #Condições iniciais
 
 theta = 45*(pi/180)  #30 é o ângulo de 30 graus, multiplicamos por Pi dividindo por 180 para ter o resultado em radiano
 g = vec(0,-9.8,0)  #aceleração da gravidade no eixo y
-bola.v = vec(20*cos(theta),20*sin(theta),0) #velocidade inicial da bola
+bola.v = vec(10*cos(theta),10*sin(theta),0) #velocidade inicial da bola
 t = 0 #tempo inicial
 dt = 0.001 #acrecimo de tempo
 
@@ -67,7 +83,10 @@ while bola.pos.y >=0.5:
         grafico_2.plot(t,bola.pos.y)
         grafico_3.plot(t,bola.v.y)
 
-
+    if velocidade_alternativa:
+        bola.v = vec(float(velocidade_field.text) * cos(theta), float(velocidade_field.text) * sin(theta), 0)  # velocidade inicial da bola
+        velocidade_alternativa = False
+        #usa essa "velocidade_digitada" na função calcular_com_velocidade_inicial(velocidade_digitada) e gg;
 
 
 
