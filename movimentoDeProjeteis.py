@@ -12,6 +12,7 @@ def executar_btn():
 
 def anexar():
     pass
+
 velocidade_alternativa = False
 def velocidade_btn():
     global velocidade_alternativa
@@ -34,9 +35,9 @@ velocidade_field = winput(bind = anexar(),type = "numeric",width=50,_height=20)
 
 #Condições iniciais
 
-theta = 45*(pi/180)  #30 é o ângulo de 30 graus, multiplicamos por Pi dividindo por 180 para ter o resultado em radiano
+theta = 45*(pi/180)  #45 é o ângulo de 30 graus, multiplicamos por Pi dividindo por 180 para ter o resultado em radiano
 g = vec(0,-9.8,0)  #aceleração da gravidade no eixo y
-bola.v = vec(10*cos(theta),10*sin(theta),0) #velocidade inicial da bola
+bola.v = vec(20*cos(theta),20*sin(theta),0) #velocidade inicial da bola
 t = 0 #tempo inicial
 dt = 0.001 #acrecimo de tempo
 
