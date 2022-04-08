@@ -21,15 +21,20 @@ def executar_btn():
 def anexar():
     pass
 
-angulo_alternativo = False
-def angulo_btn():
-    global angulo_alternativo
-    angulo_alternativo = True
+dados_alternativo = False
+def alterar_dados_btn():
+    global dados_alternativo
+    dados_alternativo = True
 
-velocidade_alternativa = False
-def velocidade_btn():
-    global velocidade_alternativa
-    velocidade_alternativa = True
+# angulo_alternativo = False
+# def angulo_btn():
+#     global angulo_alternativo
+#     angulo_alternativo = True
+#
+# velocidade_alternativa = False
+# def velocidade_btn():
+#     global velocidade_alternativa
+#     velocidade_alternativa = True
 
 
 #def calcular_com_velocidade_inicial(velocidade_digitada): - essa velocidade seria o velocidade_field.text que está no while lá em baixo,
@@ -38,8 +43,10 @@ def velocidade_btn():
 #botao
 
 button(text="Executar",bind = executar_btn)
-button(text="Alterar Angulo",bind = angulo_btn)
-button(text="Alterar Velocidade",bind = velocidade_btn)
+# button(text="Alterar Angulo",bind = angulo_btn)
+# button(text="Alterar Velocidade",bind = velocidade_btn)
+button(text="Alterar Dados",bind = alterar_dados_btn)
+
 
 #texto angulo
 angulo_texto = wtext(text="Digite o ângulo ex:45:")
@@ -117,17 +124,25 @@ while bola.pos.y >=1:
         grafico_2.plot(t,bola.pos.y-1)
         grafico_1.plot(t, bola.pos.x)
 
-    if angulo_alternativo:
+    if dados_alternativo:
         theta = (float(angulo_field.text) * (pi / 180))
-        angulo_alternativo = False
-
-    if velocidade_alternativa:
-        bola.v = vec(float(velocidade_field.text) * cos(theta), float(velocidade_field.text) * sin(theta), 0)  # velocidade inicial da bola
-        velocidade_alternativa = False
-        #usa essa "velocidade_digitada" na função calcular_com_velocidade_inicial(velocidade_digitada) e gg;
+        bola.v = vec(float(velocidade_field.text) * cos(theta), float(velocidade_field.text) * sin(theta),0)  # velocidade inicial da bola
         tempoTotal = (bola.v.y / -g.y) * 2  # calculando o tempo total do lançamento
         alcanceR = bola.v.x * tempoTotal  # calculando o alcance R
-        altura_max = (bola.v.y**2)/(-2*g.y)
+        altura_max = (bola.v.y ** 2) / (-2 * g.y)
+        dados_alternativo = False
+
+    # if angulo_alternativo:
+    #     theta = (float(angulo_field.text) * (pi / 180))
+    #     angulo_alternativo = False
+    #
+    # if velocidade_alternativa:
+    #     bola.v = vec(float(velocidade_field.text) * cos(theta), float(velocidade_field.text) * sin(theta), 0)  # velocidade inicial da bola
+    #     velocidade_alternativa = False
+    #     #usa essa "velocidade_digitada" na função calcular_com_velocidade_inicial(velocidade_digitada) e gg;
+    #     tempoTotal = (bola.v.y / -g.y) * 2  # calculando o tempo total do lançamento
+    #     alcanceR = bola.v.x * tempoTotal  # calculando o alcance R
+    #     altura_max = (bola.v.y**2)/(-2*g.y)
 
 
 tempo_total_texto = wtext(text=" Tempo total: {:0.2f} s".format(tempoTotal))
